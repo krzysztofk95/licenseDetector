@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.18)
+project(licenseDetector)
+find_package(OpenCV REQUIRED)
+include_directories( ${OpenCV_INCLUDE_DIRS} )
+add_executable(application main.cpp licensePlate.cpp)
+target_link_libraries(application ${OpenCV_LIBS})

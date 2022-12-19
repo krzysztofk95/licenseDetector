@@ -2,6 +2,8 @@
 
 This is a simple license plate detector in C++ language.
 
+Project base on Raspberry Pi 3 Model B+ with Camera Board V2.
+
 Demo images attached:
 
 1. https://github.com/krzysztofk95/licenseDetector/blob/master/demo1.png

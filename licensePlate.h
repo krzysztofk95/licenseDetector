@@ -8,6 +8,7 @@ class LicensePlate {
 
 public:
     void view(string frameName, Mat frame);
+
     void getContours(Mat imgDil, Mat img);
 };
 

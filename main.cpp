@@ -12,7 +12,7 @@ void licensePlateDetect();
 
 int main() {
 
-licensePlateDetect();
+    licensePlateDetect();
 
     return 0;
 }
@@ -20,40 +20,40 @@ licensePlateDetect();
 void licensePlateDetect() {
 
 // Instantiate Mat objects
-LicensePlate lp;
+    LicensePlate lp;
 
 // Detect camera
- VideoCapture cap(0);
- Mat image;
+    VideoCapture cap(0);
+    Mat image;
 
- while(true) {
+    while (true) {
 
- // Read the camera image
- cap.read(image);
+        // Read the camera image
+        cap.read(image);
 
- // checking if image is correct
- if(!image.data ) {
-    cout <<  "Image not found or unable to open" << endl ;
-    system(0);
-  }
+        // checking if image is correct
+        if (!image.data) {
+            cout << "Image not found or unable to open" << endl;
+            system(0);
+        }
 
 // Instantiate Mat objects
- Mat imageGray, imageBlur, imageCanny, imageDilate;
- Mat kernel = getStructuringElement(MORPH_RECT, Size(3, 3));
+        Mat imageGray, imageBlur, imageCanny, imageDilate;
+        Mat kernel = getStructuringElement(MORPH_RECT, Size(3, 3));
 
- // Preprocessing of images
- cvtColor(image, imageGray, COLOR_BGR2GRAY);
- GaussianBlur(imageGray, imageBlur, Size(3, 3), 3, 0);
- Canny(imageBlur, imageCanny, 25, 75);
- dilate(imageCanny, imageDilate, kernel);
+        // Preprocessing of images
+        cvtColor(image, imageGray, COLOR_BGR2GRAY);
+        GaussianBlur(imageGray, imageBlur, Size(3, 3), 3, 0);
+        Canny(imageBlur, imageCanny, 25, 75);
+        dilate(imageCanny, imageDilate, kernel);
 
- // Finding contours and placemant on image
- lp.getContours(imageDilate, image);
+        // Finding contours and placemant on image
+        lp.getContours(imageDilate, image);
 
- // Show shape of license plate on image
- lp.view("Image", image);
+        // Show shape of license plate on image
+        lp.view("Image", image);
 
- waitKey(1);
+        waitKey(1);
     }
 }
 
